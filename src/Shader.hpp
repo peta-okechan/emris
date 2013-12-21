@@ -256,9 +256,9 @@ private:
     
     void PrintShaderInfoLog(GLuint shader, std::string const title)
     {
-        GLint logLength;
+        GLint logLength = 0;
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logLength);
-        if (logLength > 0) {
+        if (logLength > 1) {
             GLchar *log = (GLchar *)malloc(logLength);
             glGetShaderInfoLog(shader, logLength, &logLength, log);
             std::cout << title << ": " << log << std::endl;
@@ -268,9 +268,9 @@ private:
     
     void PrintProgramInfoLog(GLuint program, std::string const title)
     {
-        GLint logLength;
+        GLint logLength = 0;
         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &logLength);
-        if (logLength > 0) {
+        if (logLength > 1) {
             GLchar *log = (GLchar *)malloc(logLength);
             glGetProgramInfoLog(program, logLength, &logLength, log);
             std::cout << title << ": " << log << std::endl;
