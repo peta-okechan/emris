@@ -1,0 +1,6 @@
+*.xcworkspace
+build/*
+!build/build.sh
+buildjs/*
+!buildjs/*.html
+!buildjs/*.js
