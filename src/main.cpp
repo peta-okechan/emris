@@ -116,13 +116,16 @@ struct Scene
     {
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_CULL_FACE);
-        glCullFace(GL_CCW);
+        glFrontFace(GL_CCW);
+        glCullFace(GL_BACK);
         glClearColor(0.0f, 0.3f, 0.0f, 1.0f);
     }
     
     virtual void Draw() {}
     
     virtual void KeyDown(unsigned char const key) {}
+    
+    virtual void MouseDown(int const button, int const x, int const y) {}
     
     Shader* CreateDefaultShaderProgram() const
     {
@@ -293,6 +296,11 @@ struct TitleScene : Scene
             }
         }
     }
+    
+    void MouseDown(int const button, int const x, int const y)
+    {
+        SwitchScene<GameScene>();
+    }
 };
 
 
@@ -456,6 +464,11 @@ struct GameScene : Scene
                 }
                 break;
         }
+    }
+    
+    void MouseDown(int const button, int const x, int const y)
+    {
+        
     }
 };
 
@@ -773,6 +786,9 @@ int main(int argc, char * argv[])
             case GLUT_KEY_DOWN: keychar = 's'; break;
         }
         currentScene->KeyDown(keychar);
+    });
+    glutMouseFunc([](int button, int state, int x, int y){
+        if (state == GLUT_DOWN) currentScene->MouseDown(button, x, y);
     });
     glutTimerFunc(1000 / fps, timercb, 0);
     

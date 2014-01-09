@@ -256,7 +256,7 @@ private:
     
     void PrintShaderInfoLog(GLuint shader, std::string const title)
     {
-        PrintInfoLog(program, title, glGetShaderiv, glGetShaderInfoLog);
+        PrintInfoLog(shader, title, glGetShaderiv, glGetShaderInfoLog);
     }
     
     void PrintProgramInfoLog(GLuint program, std::string const title)
@@ -283,11 +283,10 @@ private:
         glShaderSource(shader, 1, &code, nullptr);
         glCompileShader(shader);
         
-        PrintShaderInfoLog(shader, "Shader compile log");
-        
         GLint status;
         glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
         if (status == GL_FALSE) {
+            PrintShaderInfoLog(shader, "Shader compile log");
             glDeleteShader(shader);
             ret = 0;
             return false;
