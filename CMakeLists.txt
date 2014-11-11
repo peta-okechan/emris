@@ -4,7 +4,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 SET(CMAKE_CXX_FLAGS "-std=c++11 -Wall")
 
 SET(GLUT_INCLUDE_DIR "/usr/local/Cellar/freeglut/2.8.1/include")
-SET(GLM_INCLUDE_DIR "/usr/local/Cellar/glm/0.9.4.6/include")
+SET(GLM_INCLUDE_DIR "/usr/local/Cellar/glm/0.9.5.4/include")
 
 FIND_PACKAGE(GLUT)
 FIND_PACKAGE(OpenGL)
