@@ -248,8 +248,6 @@ private:
             return;
         }
         
-        glDetachShader(program, vsh);
-        glDetachShader(program, fsh);
         glDeleteShader(vsh);
         glDeleteShader(fsh);
     }

@@ -28,7 +28,7 @@
 #include "ObjectData.hpp"
 #include "Tetris.hpp"
 
-std::string const version = "0.3";
+std::string const version = "0.3.1";
 unsigned int const fps = 30;
 int const backgroundColor = 0xFF005500;
 float const screenWidth = 480.0f;
